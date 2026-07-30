@@ -1,0 +1,23 @@
+{
+  "name": "stock_inventory_auto_spare_parts",
+  "version": "1.0.0",
+  "description": "Backend created for Stock Inventory of Automobile Spare Parts.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Prateek Bahad",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.8.0",
+    "nodemon": "^3.1.14"
+  }
+}
