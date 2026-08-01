@@ -49,7 +49,11 @@ export const createPurchase = async (req, res) => {
 
       const total = item.quantity * item.buyPrice;
 
+      // console.log("ITEM_TOTAL:",total)
+
       totalAmount += total;
+
+      // console.log("GRAND_TOTAL:",totalAmount)
 
       existProduct.currentStock += item.quantity;
 
