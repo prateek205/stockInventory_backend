@@ -23,9 +23,6 @@ export const createProduct = async (req, res) => {
       !itemNumber ||
       !buyPrice ||
       !sellPrice ||
-      !currentStock ||
-      !minStock ||
-      !unit ||
       !imgUrl ||
       !status
     ) {

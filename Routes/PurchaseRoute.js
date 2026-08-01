@@ -1,6 +1,12 @@
 import express from "express";
 import { VerifyToken } from "../Middlewares/AuthMiddleware.js";
-import { createPurchase, getPurchases } from "../Controllers/PurchaseController.js";
+import {
+  createPurchase,
+  deletePurchase,
+  getPurchase,
+  getPurchases,
+  updatePurchase,
+} from "../Controllers/PurchaseController.js";
 
 const router = express.Router();
 

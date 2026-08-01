@@ -8,7 +8,7 @@ const PurchaseSchema = new mongoose.Schema(
       required: true,
     },
     dealer: {
-      type: Mongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Dealers",
       required: true,
     },

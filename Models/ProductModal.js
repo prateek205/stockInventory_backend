@@ -47,12 +47,12 @@ const ProductSchema = new mongoose.Schema(
     unit: {
       type: String,
       enum: ["Peice", "Lit.", "Box", "Set"],
-      default: ["Peice"],
+      default: "Peice",
     },
     status: {
       type: String,
       enum: ["Available", "Out Of Stock", "Not Available"],
-      default: ["Available"],
+      default: "Available",
     },
     imgUrl:{
         type:String,
