@@ -3,7 +3,7 @@ import Products from "../Models/ProductModal.js";
 import Purchases from "../Models/PurchaseModal.js";
 
 export const createPurchase = async (req, res) => {
-  try {
+    try {
     const {
       invoiceNumber,
       dealer,

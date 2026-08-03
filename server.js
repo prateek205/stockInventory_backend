@@ -7,6 +7,7 @@ import DealerRoute from "./Routes/DealerRoutes.js";
 import ProductRoute from "./Routes/ProductRoute.js";
 import CustomerRoute from "./Routes/CustomerRoute.js";
 import PurchaseRoute from "./Routes/PurchaseRoute.js";
+import SalesRoute from "./Routes/SaleRoute.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
@@ -24,6 +25,7 @@ app.use("/api/v1/dealer", DealerRoute);
 app.use("/api/v1/product", ProductRoute);
 app.use("/api/v1/customer", CustomerRoute);
 app.use("/api/v1/purchase", PurchaseRoute);
+app.use("/api/v1/sales",SalesRoute);
 
 app.listen(SERVER_PORT, () => {
   console.log(`The Server is Running on http://localhost:${SERVER_PORT}`);

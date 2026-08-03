@@ -7,21 +7,21 @@ const PurchaseItemSchema = new mongoose.Schema(
       ref: "Products",
       required: true,
     },
-    quantity:{
-        type:Number,
-        required:true,
+    quantity: {
+      type: Number,
+      required: true,
     },
-    buyPrice:{
-        type:Number,
-        required:true,
+    buyPrice: {
+      type: Number,
+      required: true,
     },
-    total:{
-        type:Number,
-        required:true,
-    }
+    total: {
+      type: Number,
+      required: true,
+    },
   },
   {
-    _id:false,
+    _id: false,
   },
 );
 

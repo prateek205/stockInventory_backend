@@ -1,11 +1,28 @@
 import mongoose from "mongoose";
 
-
 const salesItemSchema = new mongoose.Schema(
-    {
-        
-},{
-    _id:false,
-})
+  {
+    product: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Products",
+      required: true,
+    },
+    quantity: {
+      type: Number,
+      required: true,
+    },
+    salePrice: {
+      type: Number,
+      required: true,
+    },
+    total: {
+      type: Number,
+      required: true,
+    },
+  },
+  {
+    _id: false,
+  },
+);
 
-export default salesItemSchema
+export default salesItemSchema;
