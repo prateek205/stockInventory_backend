@@ -23,15 +23,15 @@ export const createSales = async (req, res) => {
 
     const existInvoiceNumber = await Sales.findOne({ invoiceNumber });
 
-    if (!existInvoiceNumber) {
+    if (existInvoiceNumber) {
       return res
         .status(404)
         .json({ success: false, message: "Invoice number already exists" });
     }
 
-    const existCustomer = await Customers.findById(customerName);
+    const existCustomer = await Customers.findById(customer);
 
-    if (!customerName) {
+    if (!customer) {
       return res
         .status(404)
         .json({ success: false, message: "Customer not found" });
@@ -58,7 +58,9 @@ export const createSales = async (req, res) => {
 
       const subTotal = item.quantity * existItem.sellPrice;
       const discount = (subTotal * itemDiscount) / 100;
-      const total = discount - subTotal;
+      const total = subTotal - discount;
+
+      totalAmount += total;
 
       existItem.currentStock -= item.quantity;
       await existItem.save();
@@ -76,6 +78,7 @@ export const createSales = async (req, res) => {
       customer,
       salesDate,
       items: salesItem,
+      itemDiscount,
       totalAmount,
       paymentMethod,
       remark,
@@ -236,11 +239,83 @@ export const updateSale = async (req, res) => {
           .status(404)
           .json({ success: false, message: "Product not found" });
       }
+
+      if (existsProduct.currentStock < item.quantity) {
+        return res.status(400).json({
+          success: false,
+          message: `${existProduct.productName} has only ${existProduct.currentStock} items in stock`,
+        });
+      }
+
+      const subTotal = item.quantity * existProduct.sellPrice;
+      const discount = (subTotal * itemDiscount) / 100;
+      const total = subtotal - discount;
+
+      existProduct.currentStock -= item.quantity;
+      await existProduct.save();
+
+      salesItem.push({
+        product: item.product,
+        quantity: item.quantity,
+        salePrice: existProduct.sellPrice,
+        discount: item.discount,
+        total,
+      });
     }
-  } catch (error) {}
+
+    const updateSale = await Sales.findByIdAndUpdate(id, {
+      invoiceNumber,
+      customer,
+      salesDate,
+      items: salesItem,
+      totalAmount,
+      paymentMethod,
+      remark,
+    });
+
+    return res
+      .status(200)
+      .json({ success: true, message: "Sales Update Successfully..." });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
 };
 
 export const removeSale = async (req, res) => {
   try {
-  } catch (error) {}
+    const { id } = req.params;
+
+    const existSales = await Sales.findById(id);
+
+    if (!existSales) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Sales not found" });
+    }
+
+    for (const item of existSales.items) {
+      const existProduct = await Products.findById(item.product);
+
+      if (existProduct) {
+        existProduct.currentStock -= item.quantity;
+        await existProduct.save();
+      }
+    }
+
+    await Sales.findByIdAndDelete(id);
+
+    return res
+      .status(200)
+      .json({ success: true, message: "Sales is deleted successfully" });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: "Internal Server Error",
+      error: error.message,
+    });
+  }
 };
