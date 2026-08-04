@@ -18,8 +18,13 @@ connectDb();
 
 const app = express();
 app.use(express.json());
-app.use(cors());
 app.use(cookieParser());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    withCredentials: true,
+  }),
+);
 
 app.use("/api/v1/admin", AuthRoutes);
 app.use("/api/v1/dashboard", DashboardRoute);
