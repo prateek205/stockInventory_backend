@@ -169,7 +169,7 @@ export const dashboard = async (req, res) => {
       dashboard: {
         totalProducts,
         totalDealers,
-        totalProducts,
+        totalCustomers,
         totalPurchase,
         totalSales,
 
