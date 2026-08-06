@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(
   cors({
     origin: ADMIN_URL,
-    withCredentials: true,
+    credentials: true,
   }),
 );
 
