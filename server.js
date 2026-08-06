@@ -13,6 +13,7 @@ import cookieParser from "cookie-parser";
 
 dotenv.config();
 const SERVER_PORT = process.env.PORT || 5000;
+const ADMIN_URL = process.env.ADMIN_PORT
 
 connectDb();
 
@@ -21,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: ADMIN_URL,
     withCredentials: true,
   }),
 );
