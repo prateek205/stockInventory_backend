@@ -71,7 +71,7 @@ export const LoginAdmin = async (req, res) => {
     res.cookie("adminToken", token, {
       httpOnly: true,
       secure: true,
-      sameSite: "lax",
+      sameSite: "none",
     });
 
     const user = {
