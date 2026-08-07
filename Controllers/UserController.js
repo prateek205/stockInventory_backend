@@ -110,7 +110,7 @@ export const profile = async (req, res) => {
 
 export const LogoutAdmin = async (req, res) => {
   try {
-    res.cookie("adminToken", token, {
+    res.clearCookie("adminToken", token, {
       httpOnly: true,
       secure: true,
       sameSite: "None",
