@@ -70,7 +70,7 @@ export const LoginAdmin = async (req, res) => {
 
     res.cookie("adminToken", token, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "lax",
     });
 
