@@ -107,7 +107,7 @@ export const getCustomers = async (req, res) => {
       count: customer.length,
       customer,
       totalCustomers,
-      totalPage: Math.ceil(totalCustomer / Number(limit)),
+      totalPage: Math.ceil(totalCustomers / Number(limit)),
       currentPage: Number(page),
     });
   } catch (error) {
