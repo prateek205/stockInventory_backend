@@ -134,7 +134,7 @@ export const getInventory = async (req, res) => {
         totalProducts,
         totalQuantity,
         inStock,
-        lowStock,
+        lowStockProducts,
         outOfStock,
       },
 
