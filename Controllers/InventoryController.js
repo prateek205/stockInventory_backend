@@ -72,12 +72,14 @@ export const getInventory = async (req, res) => {
     const products = await Products.find(query)
       .sort(sortOption)
       .skip(skip)
-      .limit(limitNumber);
+      .limit(limitNumber)
+      .lean();
 
     const totalProducts = await Products.countDocuments(query);
 
     const inventory = products.map((product) => {
-      const stock = Number(product.stock || 0);
+      const currentStock = Number(product.currentStock || 0);
+      const minStock = Number(product.minStock || 0);
 
       let stockStatus;
 
