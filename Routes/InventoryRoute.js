@@ -4,6 +4,6 @@ import { VerifyToken } from "../Middlewares/AuthMiddleware.js";
 
 const router = express.Router();
 
-router.get("/inventory", VerifyToken, getInventory);
+router.get("/getAllInventory", VerifyToken, getInventory);
 
 export default router;
