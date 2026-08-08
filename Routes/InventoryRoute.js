@@ -1,8 +1,9 @@
-import express from 'express'
-import { getInventory } from '../Controllers/InventoryController.js'
+import express from "express";
+import { getInventory } from "../Controllers/InventoryController.js";
+import { VerifyToken } from "../Middlewares/AuthMiddleware.js";
 
-const router = express.Route()
+const router = express.Route();
 
-router.get("/inventory", getInventory)
+router.get("/inventory", VerifyToken, getInventory);
 
-export default router
+export default router;
