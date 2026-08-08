@@ -41,28 +41,28 @@ export const getInventory = async (req, res) => {
     const skip = (pageNumber - 1) * limitNumber;
 
     const sortOptions = {
-      name_asc: {
+      "name_asc": {
         productName: -1,
       },
-      name_desc: {
+      "name_desc": {
         productName: 1,
       },
-      stock_high: {
+      "stock_high": {
         currentStock: -1,
       },
-      stock_low: {
+      "stock_low": {
         currentStock: 1,
       },
-      price_high: {
+      "price_high": {
         sellPrice: -1,
       },
-      price_low: {
+      "price_low": {
         sellPrice: 1,
       },
-      newest: {
+      "newest": {
         createdAt: -1,
       },
-      oldest: {
+      "oldest": {
         createdAt: 1,
       },
     };
