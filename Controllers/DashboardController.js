@@ -10,7 +10,7 @@ export const dashboard = async (req, res) => {
     const totalDealers = await Dealers.countDocuments();
     const totalPurchase = await Purchases.countDocuments();
     const totalSales = await Sales.countDocuments();
-    const totalCustomer = await Customers.countDocuments();
+    const totalCustomers = await Customers.countDocuments();
 
     const purchaseAmount = await Purchases.aggregate([
       {

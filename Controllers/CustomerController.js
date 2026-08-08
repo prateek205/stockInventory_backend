@@ -100,13 +100,13 @@ export const getCustomers = async (req, res) => {
       .skip(skip)
       .limit(Number(limit));
 
-    const totalCustomer = await Customers.countDocuments(query);
+    const totalCustomers = await Customers.countDocuments(query);
 
     res.status(200).json({
       success: true,
       count: customer.length,
       customer,
-      totalCustomer,
+      totalCustomers,
       totalPage: Math.ceil(totalCustomer / Number(limit)),
       currentPage: Number(page),
     });
