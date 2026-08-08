@@ -139,7 +139,7 @@ export const getSales = async (req, res) => {
 
     const sales = await Sales.find(query)
       .populate("customer")
-      .populate("item.product")
+      .populate("items.product")
       .sort(sortOptions)
       .skip(skip)
       .limit(Number(limit));
