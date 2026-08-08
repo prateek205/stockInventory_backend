@@ -83,9 +83,9 @@ export const getInventory = async (req, res) => {
 
       let stockStatus;
 
-      if (stock === 0) {
+      if (currentStock === 0) {
         stockStatus = "Out of Stock";
-      } else if (stock <= 5) {
+      } else if (currentStock <= minStock) {
         stockStatus = "Low Stock";
       } else {
         stockStatus = "In Stock";
