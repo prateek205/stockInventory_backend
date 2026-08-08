@@ -78,22 +78,22 @@ export const getInventory = async (req, res) => {
 
     const inventory = products.map((product) => {
       const stock = Number(product.stock || 0);
+
+      let stockStatus;
+
+      if (stock === 0) {
+        stockStatus = "Out of Stock";
+      } else if (stock <= 5) {
+        stockStatus = "Low Stock";
+      } else {
+        stockStatus = "In Stock";
+      }
+
+      return {
+        ...product,
+        stockStatus,
+      };
     });
-
-    let stockStatus;
-
-    if (stock === 0) {
-      stockStatus = "Out of Stock";
-    } else if (stock <= 5) {
-      stockStatus = "Low Stock";
-    } else {
-      stockStatus = "In Stock";
-    }
-
-    return {
-      ...product.toObject(),
-      stockStatus,
-    };
 
     const totalQuantityResult = await Products.aggregate([
       {
